@@ -2,19 +2,23 @@
 //no negative numbers
 
 function mathSequences(arr){
-    let arith = []
-    let geo = []
+    let arith = new Set()
+    let geo = new Set()
 
     for(i=1; i < arr.length; i++){
         let num = arr[i] - arr[i-1]
-        arith.push(num)
+        arith.add(num)
         let num2 = arr[i] / arr[i-1]
-        geo.push(num2)
+        geo.add(num2)
     }
-    console.log(`A: ${arith}`);
-    console.log(`A: ${geo}`);
-    
-    return arr
+    if (arith.size === 1){
+        return "Arithmetic"
+    }
+    else if (geo.size === 1){
+        return 'Geometric'
+    } else {
+        return -1
+    }
 }
 
 console.log(mathSequences([2,4,6,8])) //"Arithmetic"
